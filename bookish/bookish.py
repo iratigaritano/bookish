@@ -6,7 +6,22 @@ import shutil
 from mobi.kindleunpack import unpackBook
 
 class counter: 
+
+    """ Count the words of a file
+
+    Parameters
+    ----------
+    book_file: txt, epub or mobi, required
+        text to count
+    file_directory: str, default current directory
+        directory where the book is located
+    language: str, default English
+        language of the text   
+    """
     def __init__(self,book_file, file_directory=os.getcwd(), language='English'):
+        """
+        initialise the attributes of the class  after checking that the format and language is correct
+        """    
 
         __languages = ['English', 'Spanish']
         if language not in __languages:
@@ -32,6 +47,12 @@ class counter:
         'y','ni','no','tambien','tanto','como','asi','que','pero','mas','empeoro','sino','mientras','o','u','ya','porque','como','pues','sin','aunque','cuando','por','si','luego', 'conque','mientras']
 
     def read_book(self):
+        """Reads the text
+        Returns
+        -------
+        book: str
+            String of all the text without line breaks
+        """
         if self.__book_format=='txt':
             lines=open(f'{self.file_directory}/{self.book_file}', encoding='utf-8').readlines()
         elif self.__book_format=='epub':
@@ -54,16 +75,28 @@ class counter:
         book=' '.join(lines)
         return book
 
-    def cleanning(self) :
+    def cleanning(self, link_words=False) :
+        """Cleans the text
+        Parameters
+        ----------
+        link_words: bol, default False
+            If articles, conjunctions and prepositions are omitted
+        Returns
+        -------
+        book_div: list
+            List of words cleanned 
+        """
+
         book=self.read_book()
         book_cleaned=re.sub(r'[^\w]', ' ', book)
         book_div=list(filter(None, book_cleaned.lower().split(' ')))   
 
-        if self.__link_words==False:
+        if self.link_words==False:
             if self.language=='English':
                 for word in book_div:  
                     if word in self.__eng:
                         book_div.remove(word)
+    
             if self.language=='Spanish':
                 for word in book_div:  
                     if word in self.__esp:
@@ -71,6 +104,12 @@ class counter:
         return book_div
 
     def count(self):
+        """Counts the text
+        Returns
+        -------
+        sorted_word_dict: dictionary
+            Sorted dictionary of the counted words
+        """
         clean_book=self.cleanning()
         word_list=[]
         word_dict={}
