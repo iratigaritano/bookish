@@ -12,3 +12,4 @@ The project performs a word count of the text you enter. This can be attached in
 
 ## How to get it
 
+
