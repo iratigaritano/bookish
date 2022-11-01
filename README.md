@@ -16,9 +16,14 @@ The source code is hosted on: https://github.com/iratigaritano/bookish.
 The installers for the latest released version are available at: https://pypi.org/project/bookish/
 
 Command to install the package:
-
+```sh
+# Install
 pip install bookish
+```
 
 Command to update the package:
 
+```sh
+# Update
 pip install bookish --upgrade
+```
