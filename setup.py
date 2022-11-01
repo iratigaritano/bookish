@@ -6,7 +6,7 @@ setup(
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'TYPE YOUR DESCRIPTION HERE',   # Give a short description about your library
   author = 'Irati Garitano',                   # Type in your name
-  author_email = 'irati.garitano@alumni.mondragon.edu',    # Type in your E-Mail
+  author_email = 'javier.ortega@alumni.mondragon.edu',    # Type in your E-Mail
   url = 'https://github.com/iratigaritano/bookish',   # Provide either the link to your github or to your website
   download_url = 'https://github.com/iratigaritano/bookish/archive/refs/tags/v01.tar.gz',    # I explain this later on
   keywords = ['WORD', 'COUNT', 'BOOK'],   # Keywords that define your package best
