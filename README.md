@@ -7,9 +7,18 @@ The project performs a word count of the text you enter. This can be attached in
 3. Count words
 
 ## Dependencies
-- 
-
+- epub_conversion: Processing of epub files
+- mobi: Processinf of mobi files
 
 ## How to get it
+The source code is hosted on: https://github.com/iratigaritano/bookish. 
 
+The installers for the latest released version are available at: https://pypi.org/project/bookish/
 
+Command to install the package:
+
+pip install bookish
+
+Command to update the package:
+
+pip install bookish --upgrade
