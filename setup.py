@@ -1,4 +1,8 @@
 from distutils.core import setup
+from pathlib import Path
+directory = Path(__file__).parent
+long_description = (directory / "README.md").read_text()
+
 setup(
   name = 'bookish',         
   packages = ['bookish'],   
@@ -10,6 +14,10 @@ setup(
   url = 'https://github.com/iratigaritano/bookish',  
   download_url = 'https://github.com/iratigaritano/bookish/archive/refs/tags/v_07.tar.gz',    
   keywords = ['WORD', 'COUNT', 'BOOK'],  
+  
+  long_description=long_description,
+  long_description_content_type="text/markdown",
+  
   install_requires=[            
           'epub_conversion',
           'mobi',
