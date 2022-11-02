@@ -18,18 +18,11 @@ class counter:
     language: str, default English
         language of the text   
     """
-    def __init__(self,book_file, file_directory=os.getcwd(), language='English'):
+    def __init__(self,book_file, file_directory=os.getcwd(), language='English', link_words:bool=False):
         """
         initialise the attributes of the class  after checking that the format and language is correct
         """    
-        self.__eng=['above','across','along','around','against','at', 'behind','beside','below','beneath','between','by','in','of','inside','near','on','opposite','outside','over','under','underneath','upon',
-        "at", "in", "to", "of",'and', "on", 'about', 'after','around', 'before', 'beyond', 'during','for','past','since','throughout','until','away','the', 'i','it','she','he','they','their','them', 'not','her','his','him',
-        'down','from','into','off','onto','out','over','past','to', 'towards','under','up','ago','circa','per','from','with', 'a', 's', 't','as','you',
-        'that', 'we','or','if','so','this','me','there','how','when','where','that','who','whose','what','my','but']
 
-        self.__esp=['a','ante', 'bajo', 'cabe', 'con', 'contra', 'de', 'desde', 'durante', 'en', 'entre', 'hacia', 'hasta', 'mediante', 'para', 'por', 'segun', 'sin', 'so', 'sobre', 'tras', 'versus', 'via', 
-        'el','la','lo','los','las','un','una','unos','unas','al','del', 'se', 'su', 'le','sus','e','este','esta','les','aquella', 'donde','tan', 'a',
-   'y','ni','no','tambien','tanto','como','asi','que','pero','mas','empeoro','sino','mientras','o','u','ya','porque','como','pues','sin','aunque','cuando','por','si','luego', 'conque','mientras']
         __languages = ['English', 'Spanish']
         if language not in __languages:
             raise ValueError("Invalid Language. Expected one of: %s" % __languages)
@@ -38,11 +31,24 @@ class counter:
 
         __book_formats = ['txt', 'epub','mobi']
         if book_file.split('.')[-1] not in __book_formats:
-            raise ValueError("Invalid file format. Expected one of: %s" % __book_formats)
+            raise ValueError("Invalid Language. Expected one of: %s" % __book_formats)
         else:
             self.__book_format=book_file.split('.')[-1]   
             self.file_directory=file_directory
             self.book_file=book_file
+
+        self.__eng=['above','across','along','around','against','at', 'behind','beside','below','beneath','between','by','in','of','inside','near','on','opposite','outside','over','under','underneath','upon',
+        "at", "in", "to", "of",'and', "on", 'about', 'after','around', 'before', 'beyond', 'during','for','past','since','throughout','until','away','the', 'i','it','she','he','they','their','them', 'not','her','his','him',
+        'down','from','into','off','onto','out','over','past','to', 'towards','under','up','ago','circa','per','from','with', 'a', 's', 't','as','you',
+        'that', 'we','or','if','so','this','me','there','how','when','where','that','who','whose','what','my','but']
+
+        self.__esp=['a','ante', 'bajo', 'cabe', 'con', 'contra', 'de', 'desde', 'durante', 'en', 'entre', 'hacia', 'hasta', 'mediante', 'para', 'por', 'segun', 'sin', 'so', 'sobre', 'tras', 'versus', 'via', 
+        'el','la','lo','los','las','un','una','unos','unas','al','del', 'se', 'su', 'le','sus','e','este','esta','les','aquella', 'donde','tan', 'a',
+        'y','ni','no','tambien','tanto','como','asi','que','pero','mas','empeoro','sino','mientras','o','u','ya','porque','como','pues','sin','aunque','cuando','por','si','luego', 'conque','mientras']
+
+        self.__link_words=link_words
+
+    
 
     def read_book(self):
         """Reads the text
@@ -73,11 +79,11 @@ class counter:
         book=' '.join(lines)
         return book
 
-    def cleanning(self, link_word=False) :
+    def cleanning(self) :
         """Cleans the text
         Parameters
         ----------
-        link_word: bol, default False
+        link_words: bol, default False
             If articles, conjunctions and prepositions are omitted
         Returns
         -------
@@ -88,18 +94,19 @@ class counter:
         book=self.read_book()
         book_cleaned=re.sub(r'[^\w]', ' ', book)
         book_div=list(filter(None, book_cleaned.lower().split(' ')))   
-
-        if link_word==False:
+        book_div2=[]
+        if self.__link_words==False:
             if self.language=='English':
                 for word in book_div:  
-                    if word in self.__eng:
-                        book_div.remove(word)
-    
+                    if not word in self.__eng:
+                        book_div2.append(word)
             if self.language=='Spanish':
                 for word in book_div:  
-                    if word in self.__esp:
-                        book_div.remove(word)
-        return book_div
+                    if not word in self.__esp:
+                        book_div2.append(word)
+        else:
+            book_div2=book_div
+        return book_div2
 
     def count(self):
         """Counts the text
