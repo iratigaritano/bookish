@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 from pathlib import Path
 directory = Path(__file__).parent
 long_description = (directory / "README.md").read_text()
