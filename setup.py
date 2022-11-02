@@ -2,13 +2,13 @@ from distutils.core import setup
 setup(
   name = 'bookish',         
   packages = ['bookish'],   
-  version = '0.2',      
+  version = '0.3',      
   license='MIT',       
   description = 'Word count for text',   
   author = 'Irati Garitano',                 
   author_email = 'irati.garitano@alumni.mondragon.edu',    
   url = 'https://github.com/iratigaritano/bookish',  
-  download_url = 'https://github.com/iratigaritano/bookish/archive/refs/tags/v_02.tar.gz',    
+  download_url = 'https://github.com/iratigaritano/bookish/archive/refs/tags/v_03.tar.gz',    
   keywords = ['WORD', 'COUNT', 'BOOK'],  
   install_requires=[            
           'epub_conversion',
