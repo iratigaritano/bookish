@@ -73,11 +73,11 @@ class counter:
         book=' '.join(lines)
         return book
 
-    def cleanning(self, link_words=False) :
+    def cleanning(self, link_word=False) :
         """Cleans the text
         Parameters
         ----------
-        link_words: bol, default False
+        link_word: bol, default False
             If articles, conjunctions and prepositions are omitted
         Returns
         -------
@@ -89,7 +89,7 @@ class counter:
         book_cleaned=re.sub(r'[^\w]', ' ', book)
         book_div=list(filter(None, book_cleaned.lower().split(' ')))   
 
-        if link_words==False:
+        if link_word==False:
             if self.language=='English':
                 for word in book_div:  
                     if word in self.__eng:
