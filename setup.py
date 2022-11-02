@@ -6,13 +6,13 @@ long_description = (directory / "README.md").read_text()
 setup(
   name = 'bookish',         
   packages = ['bookish'],   
-  version = '0.7',      
+  version = '0.8',      
   license='MIT',       
   description = 'Word count for text',   
   author = 'Irati Garitano',                 
   author_email = 'irati.garitano@alumni.mondragon.edu',    
   url = 'https://github.com/iratigaritano/bookish',  
-  download_url = 'https://github.com/iratigaritano/bookish/archive/refs/tags/v_07.tar.gz',    
+  download_url = 'https://github.com/iratigaritano/bookish/archive/refs/tags/v_08.tar.gz',    
   keywords = ['WORD', 'COUNT', 'BOOK'],  
   
   long_description=long_description,
