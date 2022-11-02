@@ -38,7 +38,7 @@ class counter:
 
         __book_formats = ['txt', 'epub','mobi']
         if book_file.split('.')[-1] not in __book_formats:
-            raise ValueError("Invalid Language. Expected one of: %s" % __book_formats)
+            raise ValueError("Invalid file format. Expected one of: %s" % __book_formats)
         else:
             self.__book_format=book_file.split('.')[-1]   
             self.file_directory=file_directory
