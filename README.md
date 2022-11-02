@@ -27,3 +27,8 @@ Command to update the package:
 # Update
 pip install bookish --upgrade
 ```
+
+## Authors
+Javier Ortega (javier.ortega@alumni.mondragon.edu)
+
+Irati Garitano (irati.garitano@alumni.mondragon.edu)
