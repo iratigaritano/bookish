@@ -1,1 +1,1 @@
-from bookish.bookish import counter
+from bookish import counter
