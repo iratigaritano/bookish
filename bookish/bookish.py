@@ -17,8 +17,6 @@ class counter:
         directory where the book is located
     language: str, default English
         language of the text   
-    link_words: bool, default False
-         If articles, conjunctions and prepositions are omitted 
     """
     def __init__(self,book_file, file_directory=os.getcwd(), language='English', link_words:bool=False):
         """
@@ -78,7 +76,7 @@ class counter:
             shutil.move(f'{current_dir}/mobi8/{epub_book_file}',f'{self.file_directory}')
             new_dirs=next(os.walk('.'))[1]
             remove_dirs=list(set(new_dirs) -set(original_dirs))
-            to_format_book=open_book(f'{current_dir}/{epub_book_file}')
+            to_format_book=open_book(f'{self.file_directory}/{epub_book_file}')
             lines= convert_epub_to_lines(to_format_book)
             for pouvelle in remove_dirs:
                 shutil.rmtree(f'{current_dir}/{pouvelle}', ignore_errors=False)
@@ -89,6 +87,10 @@ class counter:
 
     def cleanning(self) :
         """Cleans the text
+        Parameters
+        ----------
+        link_words: bol, default False
+            If articles, conjunctions and prepositions are omitted
         Returns
         -------
         book_div: list
