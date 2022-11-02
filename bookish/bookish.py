@@ -22,7 +22,14 @@ class counter:
         """
         initialise the attributes of the class  after checking that the format and language is correct
         """    
+        self.__eng=['above','across','along','around','against','at', 'behind','beside','below','beneath','between','by','in','of','inside','near','on','opposite','outside','over','under','underneath','upon',
+        "at", "in", "to", "of",'and', "on", 'about', 'after','around', 'before', 'beyond', 'during','for','past','since','throughout','until','away','the', 'i','it','she','he','they','their','them', 'not','her','his','him',
+        'down','from','into','off','onto','out','over','past','to', 'towards','under','up','ago','circa','per','from','with', 'a', 's', 't','as','you',
+        'that', 'we','or','if','so','this','me','there','how','when','where','that','who','whose','what','my','but']
 
+        self.__esp=['a','ante', 'bajo', 'cabe', 'con', 'contra', 'de', 'desde', 'durante', 'en', 'entre', 'hacia', 'hasta', 'mediante', 'para', 'por', 'segun', 'sin', 'so', 'sobre', 'tras', 'versus', 'via', 
+        'el','la','lo','los','las','un','una','unos','unas','al','del', 'se', 'su', 'le','sus','e','este','esta','les','aquella', 'donde','tan', 'a',
+   'y','ni','no','tambien','tanto','como','asi','que','pero','mas','empeoro','sino','mientras','o','u','ya','porque','como','pues','sin','aunque','cuando','por','si','luego', 'conque','mientras']
         __languages = ['English', 'Spanish']
         if language not in __languages:
             raise ValueError("Invalid Language. Expected one of: %s" % __languages)
@@ -36,15 +43,6 @@ class counter:
             self.__book_format=book_file.split('.')[-1]   
             self.file_directory=file_directory
             self.book_file=book_file
-
-        self.__eng=['above','across','along','around','against','at', 'behind','beside','below','beneath','between','by','in','of','inside','near','on','opposite','outside','over','under','underneath','upon',
-        "at", "in", "to", "of",'and', "on", 'about', 'after','around', 'before', 'beyond', 'during','for','past','since','throughout','until','away','the', 'i','it','she','he','they','their','them', 'not','her','his','him',
-        'down','from','into','off','onto','out','over','past','to', 'towards','under','up','ago','circa','per','from','with', 'a', 's', 't','as','you',
-        'that', 'we','or','if','so','this','me','there','how','when','where','that','who','whose','what','my','but']
-
-        self.__esp=['a','ante', 'bajo', 'cabe', 'con', 'contra', 'de', 'desde', 'durante', 'en', 'entre', 'hacia', 'hasta', 'mediante', 'para', 'por', 'segun', 'sin', 'so', 'sobre', 'tras', 'versus', 'via', 
-        'el','la','lo','los','las','un','una','unos','unas','al','del', 'se', 'su', 'le','sus','e','este','esta','les','aquella', 'donde','tan', 'a',
-        'y','ni','no','tambien','tanto','como','asi','que','pero','mas','empeoro','sino','mientras','o','u','ya','porque','como','pues','sin','aunque','cuando','por','si','luego', 'conque','mientras']
 
     def read_book(self):
         """Reads the text
@@ -91,7 +89,7 @@ class counter:
         book_cleaned=re.sub(r'[^\w]', ' ', book)
         book_div=list(filter(None, book_cleaned.lower().split(' ')))   
 
-        if self.link_words==False:
+        if link_words==False:
             if self.language=='English':
                 for word in book_div:  
                     if word in self.__eng:
