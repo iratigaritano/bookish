@@ -46,9 +46,15 @@ class counter:
         'el','la','lo','los','las','un','una','unos','unas','al','del', 'se', 'su', 'le','sus','e','este','esta','les','aquella', 'donde','tan', 'a',
         'y','ni','no','tambien','tanto','como','asi','que','pero','mas','empeoro','sino','mientras','o','u','ya','porque','como','pues','sin','aunque','cuando','por','si','luego', 'conque','mientras']
 
-        self.__link_words=link_words
+        self.link_words=link_words
 
-    
+    @property
+    def link_words(self):
+        return self.__link_words
+
+    @link_words.setter
+    def link_words(self, link_words):
+        self.__link_words=link_words
 
     def read_book(self):
         """Reads the text
