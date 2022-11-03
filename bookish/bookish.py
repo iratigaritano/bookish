@@ -46,6 +46,7 @@ class counter:
         'el','la','lo','los','las','un','una','unos','unas','al','del', 'se', 'su', 'le','sus','e','este','esta','les','aquella', 'donde','tan', 'a',
         'y','ni','no','tambien','tanto','como','asi','que','pero','mas','empeoro','sino','mientras','o','u','ya','porque','como','pues','sin','aunque','cuando','por','si','luego', 'conque','mientras']
 
+        self.__abecedario=['b','c','d','f','g','h','j','k','l','m','n','ñ','p','q','r','s','t','v','w','x','z']
         self.link_words=link_words
 
     @property
@@ -101,18 +102,20 @@ class counter:
         book_cleaned=re.sub(r'[^\w]', ' ', book)
         book_div=list(filter(None, book_cleaned.lower().split(' ')))   
         book_div2=[]
-        if self.__link_words==False:
-            if self.language=='English':
-                for word in book_div:  
-                    if not word in self.__eng:
-                        book_div2.append(word)
-            if self.language=='Spanish':
-                for word in book_div:  
-                    if not word in self.__esp:
-                        book_div2.append(word)
-        else:
-            book_div2=book_div
-        return book_div2
+        book_div3=[]
+        for word in book_div:
+            if not word in self.__abecedario:
+                book_div2.append(word)
+                if self.__link_words==False:
+                    if self.language=='English': 
+                        if not word in self.__eng:
+                            book_div3.append(word)
+                    if self.language=='Spanish':
+                        if not word in self.__esp:
+                            book_div3.append(word)
+        if self.__link_words==True:
+            book_div3=book_div2
+        return book_div3
 
     def count(self):
         """Counts the text
