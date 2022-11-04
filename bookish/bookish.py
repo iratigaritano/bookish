@@ -21,21 +21,21 @@ class counter:
     def __init__(self,book_file, file_directory=os.getcwd(), language='English', link_words:bool=False):
         """
         initialise the attributes of the class  after checking that the format and language is correct
-        """    
-
-        __languages = ['English', 'Spanish']
-        if language not in __languages:
-            raise ValueError("Invalid Language. Expected one of: %s" % __languages)
-        else:
-            self.language=language
-
+        """   
+        
         __book_formats = ['txt', 'epub','mobi']
         if book_file.split('.')[-1] not in __book_formats:
-            raise ValueError("Invalid Language. Expected one of: %s" % __book_formats)
+            raise ValueError("Invalid file format. Expected one of: %s" % __book_formats)
         else:
             self.__book_format=book_file.split('.')[-1]   
             self.file_directory=file_directory
             self.book_file=book_file
+            
+        __languages = ['English', 'Spanish']
+        if language not in __languages:
+            raise ValueError("Invalid language. Expected one of: %s" % __languages)
+        else:
+            self.language=language
 
         self.__eng=['above','across','along','around','against','at', 'behind','beside','below','beneath','between','by','in','of','inside','near','on','opposite','outside','over','under','underneath','upon',
         "at", "in", "to", "of",'and', "on", 'about', 'after','around', 'before', 'beyond', 'during','for','past','since','throughout','until','away','the', 'i','it','she','he','they','their','them', 'not','her','his','him',
